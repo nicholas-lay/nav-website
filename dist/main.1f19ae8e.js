@@ -137,7 +137,7 @@ var simplifyUrl = function simplifyUrl(url) {
 var render = function render() {
   $siteList.find('li:not(.last)').remove();
   hashMap.forEach(function (node, index) {
-    var $li = $("<li>\n        <div class=\"site\">\n          <div class=\"logo\">".concat(node.logo, "</div>\n          <div class=\"link\">").concat(simplifyUrl(node.url), "</div>\n          <div class=\"close\">\n            <svg class=\"icon\">\n              <use xlink:href=\"#icon-close\"></use>\n            </svg>\n          </div>\n        </div>\n      </li>")).insertBefore($lastLi);
+    var $li = $("<li>\n        <div class=\"site\">\n          <div class=\"logo\">".concat(node.logo, "</div>\n          <div class=\"link\">").concat(simplifyUrl(node.url), "</div> \n          <div class=\"close\">\n            <svg class=\"icon\">\n              <use xlink:href=\"#icon-close\"></use>\n            </svg>\n          </div>\n        </div>\n      </li>")).insertBefore($lastLi);
     $li.on('click', function () {
       window.open(node.url);
     });
@@ -155,7 +155,7 @@ $(".addButton").on("click", function () {
   var url = window.prompt("请输入网址");
 
   if (url.indexOf("http") !== 0) {
-    url = "https//" + url;
+    url = "https://" + url;
   }
 
   hashMap.push({
@@ -207,7 +207,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50421" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59161" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

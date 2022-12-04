@@ -14,13 +14,14 @@ const simplifyUrl = (url) => {
         .replace(/\/.*/, '') // 删除 / 开头的内容
 }
 
+
 const render = () => {
     $siteList.find('li:not(.last)').remove()
     hashMap.forEach((node, index) => {
         const $li = $(`<li>
         <div class="site">
           <div class="logo">${node.logo}</div>
-          <div class="link">${simplifyUrl(node.url)}</div>
+          <div class="link">${simplifyUrl(node.url)}</div> 
           <div class="close">
             <svg class="icon">
               <use xlink:href="#icon-close"></use>
@@ -46,17 +47,17 @@ render()
 $(".addButton")
     .on("click", () => {
         let url = window.prompt("请输入网址")
+
         if (url.indexOf("http") !== 0) {
-            url = "https//" + url
+            url = "https://" + url
         }
+
         hashMap.push({
             logo: simplifyUrl(url)[0].toUpperCase(),
             url: url
         })
         render()
-    }
-
-    )
+    })
 
 window.onbeforeunload = () => {
     const string = JSON.stringify(hashMap)
